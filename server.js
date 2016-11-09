@@ -4,15 +4,16 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 8080;
 const mongoose = require('mongoose');
+const path = require('path');
 const Url = require('./model'); // our model
-const isUrl = require('nice-is-url'); // to check if url is a valid url 
-const perma = require('perma'); // to short url
+const isUrl = require('nice-is-url'); // checks if url is a valid url 
+const perma = require('perma'); // shorts url
 
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MLAB_URL_MICROSERVICE);
 
 app.get('/', (req, res) => {
-    res.send('Usage info goes here') ///////////// add instrucions about api
+    res.sendFile(path.join(__dirname+'/index.html'));
 });
 
 // get a new url and save it in db
