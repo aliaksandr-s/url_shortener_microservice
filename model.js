@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
-const UrlSchema = new Schema({
-    fullUrl: String,
-    shortUrl: String
+const Url_Schema = new Schema({
+    full_url: { type: String, index: { unique: true }},
+    short_url: String
 })
 
-module.exports = mongoose.model('Url', UrlSchema)
+module.exports = mongoose.model('Url', Url_Schema)
